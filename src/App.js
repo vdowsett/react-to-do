@@ -33,6 +33,11 @@ class App extends Component {
      this.setState({ todos: todos });
    }
 
+   deleteTodo() {
+      const todosKeep = this.state.todos.filter( todos => todos.isCompleted === false );
+      this.setState({ todos: todosKeep });
+   }
+
   render() {
      return (
        <div className="App">
@@ -45,6 +50,11 @@ class App extends Component {
           <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />
           <input type="submit" />
         </form>
+        <div>
+          <button onClick={() => this.deleteTodo() }>
+            Remove Completed Items
+          </button>
+        </div>
        </div>
      );
    }
